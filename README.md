@@ -1,3 +1,3 @@
 # ephys-pipeline-planning
 
-In progress.
+Under development, please see [the published website](https://neuroinformatics.dev/ephys-pipeline-planning).
