@@ -19,16 +19,16 @@ Note that not all proposed functionality currently exists in these tools. Please
 The proposed pipeline steps are shown below:
 
 1. [Data loading](data-loader.qmd)
-2. [Raw data quality metrics](pipeline-steps.qmd#raw-data-quality-metrics)
+2. [Raw data quality metrics](implementation.qmd#raw-data-quality-metrics)
 3. [Detect bad channels](pipeline-steps.qmd#detect-bad-channels)
-4. [Artifact detection](pipeline-steps.qmd#artifact-detection)
-5. [Artifact curation](pipeline-steps.qmd#artifact-curation)
-6. [Preprocessing](pipeline-steps.qmd#preprocessing)
-7. [Spike sorting](pipeline-steps.qmd#spike-sorting)
-8. [Postprocessing](pipeline-steps.qmd#postprocessing)
-9. [Curation](pipeline-steps.qmd#curation)
+4. [Artifact detection](implementation.qmd#artifact-detection)
+5. [Artifact curation](implementation.qmd#artifact-curation)
+6. [Preprocessing](implementation.qmd#preprocessing)
+7. [Spike sorting](implementation.qmd#spike-sorting)
+8. [Postprocessing](implementation.qmd#postprocessing)
+9. [Curation](implementation.qmd#curation)
 
-See [Pipeline steps](pipeline-steps.qmd) for full details on each step. The image below details how the steps interact, with thick green lines tracing the full automated pipeline, whereas thin lines trace additional possible data flows, including NWB conversion links from preprocessing, spike sorting, postprocessing, and curation.
+See [Pipeline Steps](implementation.qmd) for full details on each step. The image below details how the steps interact, with thick green lines tracing the full automated pipeline, whereas thin lines trace additional possible data flows, including NWB conversion links from preprocessing, spike sorting, postprocessing, and curation.
 
 ![Pipeline flow showing pipeline steps and NWB conversion links.](overview.png)
 

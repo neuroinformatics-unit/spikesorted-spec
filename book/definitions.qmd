@@ -2,14 +2,68 @@
 title: "Definitions"
 ---
 
-## Session
+## `RAW_DATA_PATH` {#raw-data-path}
 
-A **session** is a contiguous period of recording on which the user wishes to detect and sort action potentials, yielding spike times sorted into units. Sessions may be processed independently, or the goal may be to track units across sessions.
+A filepath to any raw data files or folders that can be loaded by SpikeInterface (e.g. SpikeGLX, Open Ephys, SpikeInterface folder).
 
-This definition is functional rather than purely file-based. It may differ between experiments, and it is up to the experimenter to decide what should count as a session.
+## `SPIKEINTERFACE_REC` {#spikeinterface-rec}
 
-For example, a mouse undergoing one-hour continuous training sessions over ten days followed by a test session has an intuitive session structure: each one-hour contiguous recording is a session, and the researcher may want to track units across all sessions.
+An in-memory SpikeInterface [`Recording`](https://spikeinterface.readthedocs.io/en/stable/api.html#spikeinterface.core.BaseRecording) object.
 
-More complex experiments may require different choices. A one-hour training session might be broken into four non-contiguous ten-minute blocks in which the subject performs different tasks. These blocks could be passed directly as sessions, concatenated first, or split into separate processing blocks.
+If split by shank, the `SPIKEINTERFACE_REC` may be a dictionary where the keys are shank name and values are recording for that shank e.g. `recording=[{"0": Recording1, "1": Recording2}, {"0": Recording3, "1": Recording4}]`
 
-For short trial-by-trial recording blocks using SpikeGLX gates and triggers, it is recommended to concatenate the blocks first with the appropriate CatGT functionality before passing them to the pipeline.
+## `RAW_DATA_PATH_SESSION_LIST` {#raw-data-path-session-list}
+
+A Python list of `RAW_DATA_PATH`.
+
+## `SPIKEINTERFACE_REC_SESSION_LIST` {#spikeinterface-rec-session-list}
+
+A Python list of `SPIKEINTERFACE_REC`.
+
+## `DEBUGGING_REC` {#debugging-rec}
+
+A `SPIKEINTERFACE_REC` that has been cut down to allow the pipeline to run quickly.
+
+The default time to cut a recording down to is 30 seconds, based on the Allen pipeline (as of 02/09/2026).
+
+## `DATA_LOADER_OUTPUT_RECORDINGS` {#data-loader-output-recordings}
+
+The data returned by the data loader. It may be a [`SPIKEINTERFACE_REC`](#spikeinterface-rec), a [`SPIKEINTERFACE_REC_SESSION_LIST`](#spikeinterface-rec-session-list), a [`DEBUGGING_REC`](#debugging-rec) or list thereof.
+
+## `PREPROCESSED_OUTPUT_RECORDINGS` {#preprocessed-output-recordings}
+
+Takes the form `DATA_LOADER_OUTPUT_RECORDINGS` but the recordings are the final output of the preprocessing step.
+
+## `SORTING` {#sorting}
+
+A SpikeInterface [`BaseSorting`](https://spikeinterface.readthedocs.io/en/stable/api.html#spikeinterface.core.BaseSorting) object.
+
+## `SORTING_ANALYZER` {#sorting-analyzer}
+
+A SpikeInterface [`SortingAnalyzer`](https://spikeinterface.readthedocs.io/en/stable/api.html#spikeinterface.core.SortingAnalyzer) object.
+
+## `SORTER_REPORT` {#sorter-report}
+
+The report produced for the SpikeInterface sorting result.
+
+## `POSTPROCESSING_PLOTS` {#postprocessing-plots}
+
+The collection of plots generated during postprocessing.
+
+**TODO: fill in** (for the most part these will )
+
+### `TEMPLATE_PLOTS` {#template-plots}
+
+### `WAVEFORM_PLOTS` {#waveform-plots}
+
+### `CLUSTER_PLOTS` {#cluster-plots}
+
+### `UNIT_LOCATION_PLOTS` {#unit-location-plots}
+
+### `AUTOCORRELOGRAM_PLOTS` {#autocorrelogram-plots}
+
+### `CROSSCORRELOGRAM_PLOTS` {#crosscorrelogram-plots}
+
+### `FIRING_RATE_PLOTS` {#firing-rate-plots}
+
+### `QUALITY_METRIC_PLOTS` {#quality-metric-plots}

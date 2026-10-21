@@ -22,26 +22,31 @@ book:
   sidebar:
     title: "Ephys Pipeline<br>Planning"
     style: docked
-    collapse-level: 1
+    collapse-level: 2
   page-footer:
     left: "Electrophysiology Pipeline Plan"
     right: "Built with [Quarto](https://quarto.org)."
   chapters:
     - href: index.qmd
       text: "Overview"
-    - part: "Spec"
+    - part: "Specification"
+      chapters:
+        - href: pipeline-steps.qmd
+          text: "Steps"
+        - href: config.qmd
+          text: "Config"
+        - href: outputs.qmd
+          text: "Outputs"
+        - href: on-disk-structure.qmd
+          text: "Project Structure"
+    - part: "Python Implementation"
       chapters:
         - href: data-loader.qmd
-          text: "Data loader"
-        - href: pipeline-steps.qmd
-          text: "Pipeline steps"
-        - href: outputs.qmd
-          text: "Inputs and Outputs"
-        - href: on-disk-structure.qmd
-          text: "On-disk structure"
-    - href: config.qmd
-      text: "Config"
-    - implementation.qmd
+          text: "Data Loader"
+        - href: definitions.qmd
+          text: "Definitions"
+        - href: implementation.qmd
+          text: "Pipeline Steps"
     - roadmap.qmd
 
 format:

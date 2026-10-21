@@ -1,5 +1,5 @@
 ---
-title: "On-disk structure"
+title: "Project Structure"
 ---
 
 The pipeline stores outputs in a project directory so that each step can be run independently and downstream steps can discover and validate earlier outputs.
