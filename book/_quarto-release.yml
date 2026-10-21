@@ -1,0 +1,11 @@
+# Applied to the tagged source during deployment; the tag stays unchanged.
+book:
+  site-url: https://ephys-pipeline-planning.neuroinformatics.dev/
+  navbar:
+    right:
+      - text: "0.0.0"
+        menu:
+          - text: "0.0.0"
+            href: https://ephys-pipeline-planning.neuroinformatics.dev/
+          - text: dev
+            href: https://ephys-pipeline-planning.neuroinformatics.dev/dev/

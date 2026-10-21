@@ -19,8 +19,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out dev source
         uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Check out release source
+        uses: actions/checkout@v4
+        with:
+          ref: refs/tags/v0.0.0
+          path: release-source
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -28,13 +36,23 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6
 
-      - name: Render site
-        run: quarto render book
+      - name: Render release and dev
+        run: |
+          cp book/_quarto-release.yml release-source/book/_quarto-release.yml
+          quarto render release-source/book --profile release
+          quarto render book
+
+      - name: Assemble both versions
+        run: |
+          mkdir -p published/dev
+          cp -a release-source/book/_site/. published/
+          cp -a book/_site/. published/dev/
+          rm -f published/dev/CNAME
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: book/_site
+          path: published
 
   deploy:
     environment:
