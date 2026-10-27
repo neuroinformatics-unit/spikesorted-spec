@@ -14,3 +14,5 @@ detect_bad_channels:
 ## `detect_bad_channels`
 
 See [`detect_bad_channels`](https://spikeinterface.readthedocs.io/en/latest/api.html#spikeinterface.preprocessing.detect_bad_channels) for a list of valid arguments.
+
+The `neighborhood_r2` method is not supported by the SpikeSorted pipeline and is rejected as an input.

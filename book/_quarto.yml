@@ -10,15 +10,15 @@ book:
   title: "Electrophysiology Pipeline Plan"
   search: true
   page-navigation: true
-  site-url: https://ephys-pipeline-planning.neuroinformatics.dev/dev/
+  site-url: https://neuroinformatics.dev/spikesorted-spec/dev/
   navbar:
     right:
       - text: dev
         menu:
           - text: "0.0.0"
-            href: https://ephys-pipeline-planning.neuroinformatics.dev/
+            href: https://neuroinformatics.dev/spikesorted-spec/
           - text: dev
-            href: https://ephys-pipeline-planning.neuroinformatics.dev/dev/
+            href: https://neuroinformatics.dev/spikesorted-spec/dev/
   sidebar:
     title: "Ephys Pipeline<br>Planning"
     style: docked

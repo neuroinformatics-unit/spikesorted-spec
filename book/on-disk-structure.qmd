@@ -22,7 +22,7 @@ output/
 ├── preprocessing/
 │   ├── metadata.*
 │   ├── preprocessing_plots/
-│   └── recording/                     # optional, depending on CONFIG
+│   └── recording/                     # optional, depending on PIPELINE_CONFIG
 ├── sorting/
 │   ├── sorting/
 │   └── metadata.*
@@ -42,7 +42,7 @@ output/
 : Storage format has not yet been specified.
 
 **Optional outputs**
-: Created only when enabled in the [`CONFIG`](config.qmd). Artifact detection may pause for manual curation and produce `event_periods_curated.csv`.
+: Created only when enabled in the [`PIPELINE_CONFIG`](config.qmd). Artifact detection may pause for manual curation and produce `event_periods_curated.csv`.
 :::
 
 ## Raw data metrics with sessions and shanks

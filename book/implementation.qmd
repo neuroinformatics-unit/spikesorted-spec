@@ -8,13 +8,13 @@ The [Data loader](data-loader.qmd) is separate from the pipeline steps and retur
 
 This step computes IBL's quality metrics on raw recordings.
 
-The metrics and detect-bad-channels results are written to the `RAW_DATA_METRICS_DIR` in the [`PROJECT_PATH`](outputs.qmd#project-path).
+The metrics and detect-bad-channels results are written to the `RAW_DATA_METRICS_DIR` in the [`OUTPUT_PATH`](outputs.qmd#output-path).
 
 **Inputs**
 
 - [`DATA_LOADER_OUTPUT_RECORDINGS`](definitions.qmd#data-loader-output-recordings)
-- a [`CONFIG`](outputs.qmd#config)
-- a [`PROJECT_PATH`](outputs.qmd#project-path)
+- a [`PIPELINE_CONFIG`](outputs.qmd#pipeline-config)
+- a [`OUTPUT_PATH`](outputs.qmd#output-path)
 
 **Outputs**
 
@@ -49,8 +49,8 @@ Detect bad channels after high-pass filtering at 300 Hz. This is because bandpas
 **Inputs**
 
 - [`DATA_LOADER_OUTPUT_RECORDINGS`](definitions.qmd#data-loader-output-recordings)
-- a [`CONFIG`](outputs.qmd#config)
-- a [`PROJECT_PATH`](outputs.qmd#project-path)
+- a [`PIPELINE_CONFIG`](outputs.qmd#pipeline-config)
+- a [`OUTPUT_PATH`](outputs.qmd#output-path)
 
 **Outputs**
 
@@ -86,8 +86,8 @@ These detected periods are used in [Preprocessing](#preprocessing) to zero or ot
 **Inputs**
 
 - a [`DATA_LOADER_OUTPUT_RECORDINGS`](definitions.qmd#data-loader-output-recordings)
-- a [`CONFIG`](outputs.qmd#config)
-- a [`PROJECT_PATH`](outputs.qmd#project-path)
+- a [`PIPELINE_CONFIG`](outputs.qmd#pipeline-config)
+- a [`OUTPUT_PATH`](outputs.qmd#output-path)
 
 **Outputs**
 
@@ -98,7 +98,7 @@ These detected periods are used in [Preprocessing](#preprocessing) to zero or ot
 
 - Load the recording from the passed [`DATA_LOADER_OUTPUT_RECORDINGS`](definitions.qmd#data-loader-output-recordings).
 - Detect saturation artifacts before preprocessing.
-- Detect other configured artifact classes after the required filtering steps. Use the filtering step from the passed `CONFIG`.
+- Detect other configured artifact classes after the required filtering steps. Use the filtering step from the passed `PIPELINE_CONFIG`.
 - Save detected periods to `ARTIFACT_DETECTION_DIR` as [`ARTEFACT_PERIODS_CSV`](outputs.qmd#artefact-periods-csv).
 
 **CHECKS**:
@@ -114,7 +114,7 @@ This (optional) stepprovides the user with the option to curate the automaticall
 
 - a [`RAW_DATA_PATH`](definitions.qmd#raw-data-path) or [`SPIKEINTERFACE_REC`](definitions.qmd#spikeinterface-rec)
 - an [`ARTEFACT_PERIODS_CSV`](outputs.qmd#artefact-periods-csv)
-- a [`PROJECT_PATH`](outputs.qmd#project-path)
+- a [`OUTPUT_PATH`](outputs.qmd#output-path)
 
 **Outputs**
 
@@ -152,8 +152,8 @@ this step concatenates across sessions. It should check that all passed shanks a
 **Inputs**
 
 -   [`DATA_LOADER_OUTPUT_RECORDINGS`](definitions.qmd#data-loader-output-recordings)
-- a [`CONFIG`](outputs.qmd#config)
-- a [`PROJECT_PATH`](outputs.qmd#project-path)
+- a [`PIPELINE_CONFIG`](outputs.qmd#pipeline-config)
+- a [`OUTPUT_PATH`](outputs.qmd#output-path)
 - a `concatenate_sessions` flag. If `True`, sessions will be concatenated after preprocessing.
 
 *Loaded from disk:*
@@ -197,9 +197,9 @@ The spike sorting step, made very simple thanks to SpikeInterface:
 **Inputs**
 
 - a [`SPIKEINTERFACE_REC`](definitions.qmd#spikeinterface-rec) or [`SPIKEINTERFACE_REC_SESSION_LIST`](definitions.qmd#spikeinterface-rec-session-list),
-  OR a [`PROJECT_PATH`](outputs.qmd#project-path) containing a `PREPROCESSING_DIR` with saved recording.
-- a [`CONFIG`](outputs.qmd#config)
-- a [`PROJECT_PATH`](outputs.qmd#project-path) containing a `PREPROCESSING_DIR`. This is used to store outputs and cross-check the metadata of the passed recording to the on-disk project.
+  OR a [`OUTPUT_PATH`](outputs.qmd#output-path) containing a `PREPROCESSING_DIR` with saved recording.
+- a [`PIPELINE_CONFIG`](outputs.qmd#pipeline-config)
+- a [`OUTPUT_PATH`](outputs.qmd#output-path) containing a `PREPROCESSING_DIR`. This is used to store outputs and cross-check the metadata of the passed recording to the on-disk project.
 
 **Outputs**
 
@@ -224,9 +224,9 @@ Postprocessing computes unit quality metrics used for curation.
 **Inputs**
 
 - a [`SPIKEINTERFACE_REC`](definitions.qmd#spikeinterface-rec) or [`SPIKEINTERFACE_REC_SESSION_LIST`](definitions.qmd#spikeinterface-rec-session-list),
-  OR a [`PROJECT_PATH`](outputs.qmd#project-path) containing a `PREPROCESSING_DIR` with saved recording.
-- a [`CONFIG`](outputs.qmd#config)
-- a [`PROJECT_PATH`](outputs.qmd#project-path)
+  OR a [`OUTPUT_PATH`](outputs.qmd#output-path) containing a `PREPROCESSING_DIR` with saved recording.
+- a [`PIPELINE_CONFIG`](outputs.qmd#pipeline-config)
+- a [`OUTPUT_PATH`](outputs.qmd#output-path)
 
 **Outputs**
 
@@ -251,8 +251,8 @@ The curation step computes labels and merges automatically (e.g. with Bombcell, 
 
 **Inputs**
 
-- a [`PROJECT_PATH`](outputs.qmd#project-path) containing a `POSTPROCESSING_DIR` with a saved [`SORTING_ANALYZER`](definitions.qmd#sorting-analyzer)
-- a [`CONFIG`](outputs.qmd#config)
+- a [`OUTPUT_PATH`](outputs.qmd#output-path) containing a `POSTPROCESSING_DIR` with a saved [`SORTING_ANALYZER`](definitions.qmd#sorting-analyzer)
+- a [`PIPELINE_CONFIG`](outputs.qmd#pipeline-config)
 
 **Outputs**
 

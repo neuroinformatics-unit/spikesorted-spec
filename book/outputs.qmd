@@ -2,7 +2,7 @@
 title: "Outputs"
 ---
 
-Data objects and files passed between the stages in [Steps](pipeline-steps.qmd). Python data objects are described in [Definitions](definitions.qmd). On-disk locations are resolved relative to `PROJECT_PATH`.
+Data objects and files passed between the stages in [Steps](pipeline-steps.qmd). Python data objects are described in [Definitions](definitions.qmd). On-disk locations are resolved relative to `OUTPUT_PATH`.
 
 ## Inputs
 
@@ -21,11 +21,11 @@ The two columns are:
 
 A ProbeInterface [`Probe`](https://probeinterface.readthedocs.io/en/main/api.html#probeinterface.Probe) object.
 
-### `PROJECT_PATH` {#project-path}
+### `OUTPUT_PATH` {#output-path}
 
 The root directory for the pipeline output. Here outputs from steps are saved and used as inputs for following steps.
 
-### `CONFIG` {#config}
+### `PIPELINE_CONFIG` {#pipeline-config}
 
 The YAML configuration file for the pipeline. See [Config](config.qmd) for the full example and specification.
 
@@ -35,7 +35,7 @@ The YAML configuration file for the pipeline. See [Config](config.qmd) for the f
 
 A set of metrics that estimate the quality of raw data, based on the IBL [spike-sorting white paper](https://doi.org/10.6084/m9.figshare.19705522). 
 
-For steps that are measured after preprocessing, `phase_shift`, a TEMPORAL_FILTER and COMMON_REFERENCE step are applied, based on the CONFIG.
+For steps that are measured after preprocessing, `phase_shift`, a TEMPORAL_FILTER and COMMON_REFERENCE step are applied, based on the PIPELINE_CONFIG.
 
 These metrics are computed and stored on disk, and used to generate [`RAW_DATA_QUALITY_PLOTS`](#raw-data-quality-plots). No hard thresholds are applied to these metrics to determine inclusion or exclusion of data, instead this is decided by visual inspection of the plots.
 
@@ -72,6 +72,8 @@ Outputs from the [detect bad channels step](pipeline-steps.qmd#detect-bad-channe
 #### `BAD_CHANNEL_IDS` {#bad-channel-ids}
 
 The channel IDs identified as bad by the detect-bad-channels step.
+
+**TODO:** Document cross-session bad-channel ID unions for concatenation and unit matching, including per-shank behavior, the `session_unions` directory, and `sessions.yaml` alongside each union CSV listing the contributing session names and generation date.
 
 #### `BAD_CHANNEL_LABELS` {#bad-channel-labels}
 
